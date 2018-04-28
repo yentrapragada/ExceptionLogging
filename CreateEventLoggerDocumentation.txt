@@ -1,0 +1,23 @@
+First create an Event Viewer to store all the errors.
+So i have created an windows application to create event viewer.
+To eliminate security issues run visualstudio as Administrator.
+That can be done by using the following Code.
+Example : 
+if (txtEventLogName.Text != string.Empty && txtEventLogSource.Text != string.Empty)
+{
+	if (!System.Diagnostics.EventLog.SourceExists(txtEventLogSource.Text))
+        {
+        	System.Diagnostics.EventLog.CreateEventSource(txtEventLogName.Text, txtEventLogSource.Text);
+                MessageBox.Show("EventViewer Created");
+                txtEventLogName.Text = string.Empty;
+                txtEventLogSource.Text = string.Empty;
+        }
+        else
+        {
+                MessageBox.Show("Event Source already existed in Event Viewer");
+        }
+}
+else
+{
+        MessageBox.Show("EventViewer Not Created");
+}
